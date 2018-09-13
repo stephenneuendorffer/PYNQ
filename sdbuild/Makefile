@@ -199,6 +199,7 @@ $$(IMAGE_$1) : $$(BASE_PATH_$1) $$(STAGE4_DEPENDS_$1) $$(BOOT_FILES_$1) $$(MODUL
 	sudo chroot $$(STAGING_$1) depmod -a $$(LINUX_VERSION)
 	$$(SCRIPT_DIR)/resize_umount.sh $$(IMAGE_$1) $$(STAGING_$1)
 
+$1: $$(IMAGE_$1) $$(BOOT_$1)
 
 # SDX Specific Rules
 SDX_DIR_$1 := $$(SDX_ROOT)/$1/sw
