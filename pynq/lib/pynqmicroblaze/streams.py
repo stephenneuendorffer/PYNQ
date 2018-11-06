@@ -99,9 +99,12 @@ class SimpleMBChannel:
         return read_array.tobytes()
 
     def read(self, n=-1):
+        assert(n >= 0);
+
         data = self.read_upto(n)
         while len(data) != n and n != -1:
-            assert(len(data) < n)
+            if(len(data) >= n):
+                print("assert: ", len(data), n)
             data += self.read_upto(n-len(data))
         return data
 
